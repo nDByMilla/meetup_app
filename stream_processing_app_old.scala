@@ -18,7 +18,7 @@ object stream_processing_app {
     val mysql_host_name = "localhost"
     val mysql_port_no = "3306"
     val mysql_user_name = "root"
-    val mysql_password = "Black12Passat"
+    val mysql_password = ""
     val mysql_database_name = "meetup_rsvp_db"
     val mysql_driver_class = "com.mysql.cj.jdbc.Driver"
     val mysql_table_name = "meetup_rsvp_message_agg_detail_tbl"
@@ -28,7 +28,7 @@ object stream_processing_app {
     val mongodb_host_name = "0.0.0.0"
     val mongodb_port_no = "27017"
     val mongodb_user_name = "camil"
-    val mongodb_password = "Black12Passat"
+    val mongodb_password = ""
     val mongodb_database_name = "meetup_rsvp_db"
     val mongodb_collection_name = "meetup_rsvp_message_detail_tbl"
     // Code Block 1 Ends Here
@@ -120,7 +120,7 @@ object stream_processing_app {
     // Code Block 5 Starts Here
     // Writing Meetup RSVP DataFrame into MongoDB Collection Starts Here
     //val spark_mongodb_output_uri = "mongodb://" + mongodb_user_name + ":" + mongodb_password + "@" + mongodb_host_name + ":" + mongodb_port_no + "/" + mongodb_database_name + "." + mongodb_collection_name
-    val spark_mongodb_output_uri = "mongodb+srv://camil:Black12Passat@cluster0-vwgo4.mongodb.net/meetup_rsvp_db?retryWrites=true&w=majority"
+    val spark_mongodb_output_uri = "mongodb+srv://camil:@cluster0-vwgo4.mongodb.net/meetup_rsvp_db?retryWrites=true&w=majority"
     //val spark_mongodb_output_uri = "mongodb://0.0.0.0:27017/?readPreference=primary&appname=MongoDB%20Compass%20Community&ssl=false"
     println("Printing spark_mongodb_output_uri: " + spark_mongodb_output_uri)
 

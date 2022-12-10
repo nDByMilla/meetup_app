@@ -11,7 +11,7 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
 server = app.server
 
-uri = 'mongodb://camil:Black12Passat@127.0.0.1:27017/meetup_rsvp_db' 
+uri = 'mongodb://camil:@127.0.0.1:27017/meetup_rsvp_db'
 
 def main(uri):
     client = pymongo.MongoClient(uri)

@@ -1,4 +1,3 @@
-# Code Block 1 Starts
 import dash
 import dash_html_components as dhtml
 import dash_core_components as dcc
@@ -26,7 +25,7 @@ def build_pd_df_from_sql():
     host_name = "localhost"
     port_no = "3306"
     user_name = "root"
-    password = "Black12Passat"
+    password = ""
     database_name = "meetup_rsvp_db"
 
     mysql_jdbc_url = "mysql+mysqlconnector://" + user_name + ":" + password + "@" + host_name + ":" + port_no + "/" + database_name
@@ -34,9 +33,7 @@ def build_pd_df_from_sql():
     print(mysql_jdbc_url)
 
     db_engine = create_engine(mysql_jdbc_url, echo=False)
-
     sql_query_for_grid = "select group_name, group_country, group_state, group_city, group_lat, group_lon, response, response_count, batch_id from meetup_rsvp_message_agg_detail_tbl where batch_id in (select max(batch_id) from meetup_rsvp_message_agg_detail_tbl) order by response_count desc limit 10"
-
     df1 = pd.read_sql_query(sql_query_for_grid, db_engine)
 
     sql_query_for_bar_graph = "select group_name, case when response = 'yes' then response_count else 0 end as yes_response_count, case when response = 'no' then response_count else 0 end as no_response_count from meetup_rsvp_message_agg_detail_tbl where batch_id in (select max(batch_id) from meetup_rsvp_message_agg_detail_tbl) order by response_count desc limit 10"

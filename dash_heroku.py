@@ -14,7 +14,7 @@ import pprint
 #'MONGO_HOST = "REMOTE_IP_ADDRESS"
 MONGO_DB = "meetup_rsvp_db"
 MONGO_USER = "camil"
-MONGO_PASS = "Black12Passat"
+MONGO_PASS = ""
 
 server = SSHTunnelForwarder(
     ssh_username=MONGO_USER,
@@ -29,11 +29,11 @@ db = client[MONGO_DB]
 #'pprint.pprint(db.collection_names())
 
 server.stop()
-#cnxn = mod.connect("Port=27017;Database=meetup_rsvp_db;User=camil;Password=Black12Passat;")
-#cnxn = pyodbc.connect("DSN=CData MongoDB Sys;Port=27017,Database=meetup_rsvp_db,User=camil;Password=Black12Passat")
+#cnxn = mod.connect("Port=27017;Database=meetup_rsvp_db;User=;Password=;")
+#cnxn = pyodbc.connect("DSN=CData MongoDB Sys;Port=27017,Database=meetup_rsvp_db,User=camil;Password=")
 '''
 
-cnxn = pyodbc.connect('DRIVER={CData ODBC Driver for MongoDB};Server=127.0.0.1;Port=27017;Database=meetup_rsvp_db;User=camil;Password=Black12Passat;')
+cnxn = pyodbc.connect('DRIVER={CData ODBC Driver for MongoDB};Server=127.0.0.1;Port=27017;Database=meetup_rsvp_db;User=camil;Password=;')
 heroku logs --tailheroku logs --taildf = pd.read_sql("SELECT group_name, guests FROM meetup_rsvp_message_detail_tbl LIMIT 10", cnxn)
 app_name = 'dash-mongodbdataplot'
 
@@ -41,7 +41,7 @@ print(df.guests)
 
 
 
-cnxn = pyodbc.connect('DRIVER={CData ODBC Driver for OData};User=camil;Password=Black12Passat;URL=http://myserver/myOrgRoot;')
+cnxn = pyodbc.connect('DRIVER={CData ODBC Driver for OData};User=camil;Password=;URL=http://myserver/myOrgRoot;')
 
 df = pd.read_sql("SELECT group_name, guests FROM meetup_rsvp_message_detail_tbl LIMIT 10", cnxn)
 app_name = 'dash-mongodbdataplot'

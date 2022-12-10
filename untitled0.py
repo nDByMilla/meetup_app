@@ -7,7 +7,7 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 
-uri = 'mongodb+srv://camil:Black12Passat@cluster0-vwgo4.mongodb.net/meetup_rsvp_db?retryWrites=true&w=majority' 
+uri = 'mongodb+srv://camil:@cluster0-vwgo4.mongodb.net/meetup_rsvp_db?retryWrites=true&w=majority'
 
 client = MongoClient(uri)
 db = client.meetup_rsvp_db
@@ -15,9 +15,9 @@ collection = db.meetup_rsvp_message_detail_tbl
 df = pd.DataFrame(list(collection.find()))
 
 
-df['group_lat']=df.group_lat.astype(float)
-df['group_lon']=df.group_lon.astype(float)
-df['guests']=df.guests.astype(int)
+df['group_lat'] = df.group_lat.astype(float)
+df['group_lon'] = df.group_lon.astype(float)
+df['guests'] = df.guests.astype(int)
 
 #print(df.group_lat)
 
@@ -25,8 +25,7 @@ mapbox_access_token = "pk.eyJ1IjoiY2FtaWxsYXNjZiIsImEiOiJja2MwcHRpYmsxbHZwMnJsZ2
 
 px.set_mapbox_access_token(mapbox_access_token)
 
-fig = px.scatter_mapbox(df, lat="group_lat",lon="group_lon",size='guests',
-                hover_name='event_name' ,zoom=4)
+fig = px.scatter_mapbox(df, lat="group_lat", lon="group_lon", size='guests', hover_name='event_name', zoom=4)
 fig.update_layout(mapbox=dict(
         accesstoken=mapbox_access_token,
         bearing=0,
